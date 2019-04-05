@@ -44,17 +44,11 @@ function getGifs() {
         // YOUR CODE GOES HERE!!!
         console.log(response);      // Console shows that response.data returns and array!
 
+        // Clear gifs 
+        $("#gif-contain").empty();
+
         // iterate through array
         for (i = 0; i < response.data.length; i++) {
-            // <div class="card" style="width: 18rem;">
-            //     <img class="card-img-top" src="" alt="Card image cap" />
-            //     <div class="card-body">
-            //         <h5 class="card-title">Card title</h5>
-            //         <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-            //         <a href="#" class="btn btn-primary">Go somewhere</a>
-            //     </div>
-            // </div>
-
             var cardMain = $("<div style='width: 18rem;'>");
             cardMain.addClass("card");
 
@@ -114,8 +108,10 @@ $("#add-gif").on("click", function () {
 
     var gifType = $("#gif-input").val();
 
-    gifs.push(gifType);
-    renderButtons(gifs);
+    if(gifType != "") {
+        gifs.push(gifType);
+        renderButtons(gifs);
+    }
 });
 
 //Event handler that handles to play/pause gifs if clicked
